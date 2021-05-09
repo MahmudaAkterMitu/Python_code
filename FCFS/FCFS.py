@@ -30,11 +30,12 @@ while(1):
         temp_list.append(AT)
         input_list.append(temp_list)
 
-      # sorting
+      # sorting the processes according to their arrival time.
       input_list.sort(key=lambda x: x[3])
       #print(input_list)     
 
-      # FCFS
+      # If multiple process arrive at the same time, the shortest process among them gets the schedule first. Handled below:
+      # Start
       temp = []
       input_list1 = []
       p = input_list[0][-1]
@@ -49,8 +50,10 @@ while(1):
           for i in temp:
             input_list1.append(i)
           temp = []
-      print(input_list1)
+      #print(input_list1)
+      # End
 
+      # FCFS
       for i in input_list1:   
         res = []
         p = i[-1]
@@ -71,11 +74,10 @@ while(1):
           res.append(timeline)
           res.append(turnAround)
           res_list.append(res)
-
       #print(res_list)
-      print("\t Sequence Number \t Process Name\tTimeline\t Turn Around")
-      
+
       # printing the whole result
+      print("\t Sequence Number \t Process Name\tTimeline\t Turn Around")    
       i = 0
       att = 0
       for j in res_list:
