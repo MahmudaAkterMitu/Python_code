@@ -35,7 +35,23 @@ while(1):
       #print(input_list)     
 
       # FCFS
-      for i in input_list:   
+      temp = []
+      input_list1 = []
+      p = input_list[0][-1]
+      for i in input_list:
+        if i[-1] == p:
+          temp.append(i)
+          #print(temp)
+        else:
+          p = i[-1]
+          temp.sort(key=lambda x: x[2])
+          temp.append(i)
+          for i in temp:
+            input_list1.append(i)
+          temp = []
+      print(input_list1)
+
+      for i in input_list1:   
         res = []
         p = i[-1]
         if int(p) <= globalTime:
@@ -52,7 +68,7 @@ while(1):
           globalTime  = globalTime + int(i[-2])
           turnAround = globalTime - int(i[-1])          
           res.append(i[-3])
-          res.append(timeline)''
+          res.append(timeline)
           res.append(turnAround)
           res_list.append(res)
 
